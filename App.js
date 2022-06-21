@@ -1,19 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from "react";
+import {View, StyleSheet} from "react-native";
+import { TouchableOpacity } from "react-native-web";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+const App = () => {
+  const [toggle, setToggle] = useState(false);
+
+  const handleOnPress = () => setToggle((oldToggle) => !oldToggle);
+    return (
+        <View style={toggle ? style.clight : style.container}>
+          <TouchableOpacity onPress={handleOnPress}/>
+        </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
+export default App;
+
+const style = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'tomato',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  clight: {
+    flex: 1,
+    backgroundColor: 'pink',
     alignItems: 'center',
     justifyContent: 'center',
   },
